@@ -13,7 +13,7 @@ Along with this, we also have a mechanism to prevent buying of credits above a c
 - Vishnu T C
 
 ## Link to product walkthrough
-[link to video](./demo.mp4)
+[link to video](https://youtu.be/aCbYL2pREEA)
 
 ## How it Works ?
 Our project uses ganache to set up a local blockchain network
