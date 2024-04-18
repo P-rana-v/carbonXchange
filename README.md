@@ -25,7 +25,7 @@ Then we run the frontend and we can carry out the trading operations there
 solidity
 truffle
 node
-ganache-ci
+ganache-cli
 
 ## How to configure
 install metamask extension on your browser
