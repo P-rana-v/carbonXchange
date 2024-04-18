@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarbonXchange</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart', 'corechart']}); // Include 'corechart' twice
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Month', 'EU ETS (USD/ton)', 'California CCA (USD/ton)'],  // Replace 'Month' with 'Year' if using yearly data
+        ['Jan-2022', 70,  40 ],  // California data starts from 2013
+        ['Feb-2022', 72,  42 ],
+        ['Mar-2022', 74,  43 ],
+        ['Apr-2022', 76,  39 ],
+        ['May-2022', 75,  47 ],
+        ['Jun-2022', 77,  45 ],
+        ['Jul-2022', 79,  51 ],
+        ['Aug-2022', 81,  50 ],
+        ['Sep-2022', 82,  47 ],
+        ['Oct-2022', 84,  48 ],
+        ['Nov-2022', 86,  54 ],
+        ['Dec-2022', 88,  34 ],
+        ['Jan-2023', 80,  52 ],
+        ['Feb-2023', 82,  54 ],
+        ['Mar-2023', 84,  56 ],
+        ['Apr-2023', 83,  58 ],
+        ['May-2023', 78,  60 ],
+        ['Jun-2023', 80,  62 ],
+        ['Jul-2023', 82,  60 ],
+        ['Aug-2023', 86,  64 ],
+        ['Sep-2023', 85,  63 ],
+        ['Oct-2023', 88,  66 ],
+        ['Nov-2023', 90,  68 ],
+        ['Dec-2023', 92,  70 ]
+      ]);
+
+      var options = {
+        title: 'Carbon Trade Prices (2022-2023)',
+        curveType: 'function',  // Change to 'line' for a simpler line chart
+        legend: { position: 'bottom' },
+        hAxis: {
+          title: 'Month'  // Change to 'Year' if using yearly data
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  </head>
+  <body style="background-color: #071828;">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a href="#" class="navbar-brand"
+          >CarbonXchange</a
+        >
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <!--margin start = margin left-->
+            <li class="nav-item">
+              <div class="nav-link">Seller</div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link">Buyer</div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link">market</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="p-5 text-light text-center text-sm-start">
+      <!--padding -->
+      <div class="container">
+        <div class="d-flex">
+          <!--display flex-->
+          <div>
+            <h1>
+              What is<span class="text-success"> Carbon Emmision Exchange</span>
+            </h1>
+            <p class="my-4">
+              <!-- margin-top margin-bottom -->
+              As the global climate change issues are increasingly concerned by
+              the international community, all countries are actively seeking
+              ways of reducing emissions of greenhouse gases. Emissions trading
+              is a market-based approach to controlling pollution by providing
+              economic incentives for reducing the emissions of pollutants such
+              as carbon dioxide (CO2). In a carbon emission exchange, the
+              government can allocate or sell carbon emission credits regularly,
+              and enterprises can also trade their carbon emissions in this
+              market. At present, the world's largest greenhouse gas emission
+              trading market is The European Union Emission Trading System (or
+              EU-ETS). It operates in all EU countries plus Iceland,
+              Liechtenstein and Norway. Some other countries, such as UK, China,
+              are also actively building their own carbon emission markets.
+              However, in these markets, most of them adopt the single-side
+              auctions such as pricing transaction and bidding methods which are
+              considered not economic-efficient. We intend to build a
+              decentralized double auction platform for carbon emission exchange
+              to tackle this problem. So that carbon emissions trading can be
+              processed more efficiently and safely.
+            </p>
+            <button class="btn btn-success btn-lg mb-5">
+              Let's start an auction!
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    <br />
+    <br />
+
+    <h1 id="title" class="text-center text-light">GLOBAL CO2 CONSUMPTION</h1>
+    <div id="map" class="mb-5 mt-5"></div>
+
+    <br />
+
+    <div id="curve_chart" style="width: 900px; height: 500px"
+    class="mx-auto mt-5"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.1.1/dist/svgMap.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/map.css">
+    <script src="./assets/js/main.js"></script>
+
+    <section class="p-5">
+      <div class="container">
+        <div class="row g-4">
+          <!--gap-->
+          <div class="col-md">
+            <div class="card bg-light text-dark">
+              <div class="card-body">
+                <div class="card-title">Buyer Agent Interface</div>
+                <form action="">
+                  <div class="form-group">
+                    <label for="buyer price">Price:</label>
+                    <input
+                      type="buyer price"
+                      class="input input-default input-buyer-Price"
+                      placeholder="Enter price"
+                      id="buyerprice"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="buyer quantity">Quantity :</label>
+                    <input
+                      type="buyerquantity"
+                      class="input input-default input-buyer-Quantity"
+                      placeholder="Enter quantity"
+                      id="buyerquantity"
+                    />
+                  </div>
+                  <button type="buyerbid" class="btn btn-success btn-BuyerBid">
+                    place bid
+                  </button>
+                  <button
+                    type="getrefund"
+                    class="btn btn-success btn-buyer-MakePayment"
+                  >
+                    get refund
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="card bg-light text-dark">
+              <div class="card-body">
+                <div class="card-title">Seller Agent Interface</div>
+                <form action="">
+                  <div class="form-group">
+                    <label for="seller price">Price:</label>
+                    <input
+                      type="sellerprice"
+                      class="input input-default input-seller-Price"
+                      placeholder="Enter price"
+                      id="sellerprice"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="seller quantity">Quantity :</label>
+                    <input
+                      type="sellerquantity"
+                      class="input input-default input-seller-Quantity"
+                      placeholder="Enter quantity"
+                      id="sellerquantity"
+                    />
+                  </div>
+                  <button
+                    type="sellerbid"
+                    class="btn btn-success btn-SellerBid"
+                  >
+                    list
+                  </button>
+                  <button
+                    type="getpayment"
+                    class="btn btn-success btn-buyer-MakePayment"
+                  >
+                    get payment
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="card bg-light text-dark">
+              <div class="card-body">
+                <div class="card-title">Market Management Interface</div>
+                <button
+                  type="market clearing"
+                  class="btn btn-success btn-marketClearing"
+                >
+                  Clear Transaction
+                </button>
+                <button type="clear all" class="btn btn-success btn-ClearAll">
+                  Clear All
+                </button>
+                <div class="card-text">Market Information after Clearing</div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Clearing information type</th>
+                      <th>value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="active">
+                      <td>clearing Price</td>
+                      <td class="td-ClearingPrice"></td>
+                    </tr>
+                    <tr class="success">
+                      <td>clearing Quantity</td>
+                      <td class="td-ClearingQuantity"></td>
+                    </tr>
+                    <tr class="warning">
+                      <td>clearing Type</td>
+                      <td class="td-ClearingType"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-5 text-light">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md p-5">
+            <h2>Project Introduction</h2>
+            <p class="lead">
+              Project team members(In alphabetical order): 
+              Pranav
+              Hridya
+              Abhinand
+              Vishnu
+            </p>
+            <p>
+              Our project tech stack includes CSS, JavaScript, HTML5, Git, VS
+              Code, Ethereum, Solidity, MetaMask, Ganache, Remix IDE and
+              Bootstrap. Please click this button to learn more.
+            </p>
+            <a
+              href=""
+              onclick="window.open('https://github.com/HarmoniaLeo/FTGP-Group2')"
+              class="btn btn-light"
+              >learn more</a
+            >
+          </div>
+
+          <div class="col-md">
+            <img
+              src="./images/CO2_green.png"
+              alt="showcase"
+              class="w-50 d-none d-md-block"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-5">
+      <div class="container">
+        <h2 class="text-center text-light">Common Problems</h2>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                Can' t clear the market?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Only market managers have the access to click Market Clearing
+                and Clear All button.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+                A lower balance than expected in account?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingTwo"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Note that each transaction sent to the smart contract will incur
+                gas fee, which is borne by the account calling the interface. So
+                that in practice each account ends up with a lower balance than
+                expected.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
+              >
+                What data format should the price I entered be？
+              </button>
+            </h2>
+            <div
+              id="flush-collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingThree"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Only prices in integer format are supported here, and prices in
+                decimal form are not supported
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-5">
+      <div class="container">
+        <h2 class="text-center mb-4 text-light">Contact us</h2>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">e-mail： phav@gmail.com</li>
+          <li class="list-group-item">
+            Address：Senate House, Tyndall Avenue, BRISTOL
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
+
+
